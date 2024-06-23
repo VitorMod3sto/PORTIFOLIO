@@ -1,0 +1,904 @@
+{
+	"info": {
+		"_postman_id": "a8af5f05-6c8c-459f-937b-8b948257ec84",
+		"name": "PROJECT STORE",
+		"description": "Sistema de Backend para uma loja virtual (Project Store). No sistema será possível fazer o controle do cadastramento, edição e exclusão de produtos, clientes, categorias e subcategoria de produtos, formas de pagamento e dos pedidos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33176066"
+	},
+	"item": [
+		{
+			"name": "CLIENTES",
+			"item": [
+				{
+					"name": "CRIAR CLIENTE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"nome\":\"Vitor\", \r\n\"email\":\"vitorbrgamryt2@gmail.com\", \r\n\"telefone\": \"61986093998\", \r\n\"senha\":\"real\", \r\n\"endereco\":{\r\n    \"cep\": \"72215017\",\r\n        \"uf\": \"df\",\r\n        \"localidade\": \"brasilia\",\r\n        \"bairro\": \"ceilandia\",\r\n        \"numero\": \"31\",\r\n        \"complemento\": \"casa\"\r\n},\r\n \"dataNascimento\":\"2004-03-29\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/clientes",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"clientes"
+							]
+						},
+						"description": "Rota para criar cliente (através do body, como o exemplo abaixo)."
+					},
+					"response": []
+				},
+				{
+					"name": "VER CLIENTES",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/clientes",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"clientes"
+							]
+						},
+						"description": "Rota para ver todos os clientes cadastrados."
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCA CLIENTE POR ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/clientes/666918f33eb0d6bed1e747fc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"clientes",
+								"666918f33eb0d6bed1e747fc"
+							]
+						},
+						"description": "Rota para buscar cliente específico através do ID."
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN CLIENTE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"email\": \"vitorbrgamryt2@gmail.com\",\r\n \"senha\": \"Real\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Rota para o cliente realizar o login no site. (através de email senha fornecidos pelo body, passando por um validador conforme exemplo abaixo)"
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR CLIENTE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"nome\": \"Vitor Alves\",\r\n \"dataNascimento\": \"2004-03-29\" ,\r\n \"telefone\": \"61999999999\",\r\n \"email\": \"vitor@email.com\",\r\n \"endereco\": {\"cep\": \"72215017\",\r\n        \"uf\": \"DF\",\r\n        \"localidade\": \"Brasília\",\r\n        \"bairro\": \"Ceilandia\",\r\n        \"numero\": \"0\",\r\n        \"complemento\": \"Casa\"\r\n     },\r\n \"senha\": \"Real\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/clientes/666397ba6ef4ae1c0cde6c93",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"clientes",
+								"666397ba6ef4ae1c0cde6c93"
+							]
+						},
+						"description": "Rota para atualizar os dados do cliente (através do body)."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETAR CLIENTE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/clientes/6669172d466675b749176217",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"clientes",
+								"6669172d466675b749176217"
+							]
+						},
+						"description": "Rota para excluir um cliente específico buscando-o pelo id."
+					},
+					"response": []
+				}
+			],
+			"description": "CRUD (operações básicas de exclusão, edição e exclusão) de clientes."
+		},
+		{
+			"name": "CATEGORIAS",
+			"item": [
+				{
+					"name": "CRIAR CATEGORIA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Blusas\",\r\n    \"descricao\": \"Blusas de todas as marcas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/categorias",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"categorias"
+							]
+						},
+						"description": "Rota para criar categoria (através do body)"
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR CATEGORIAS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/categorias",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"categorias"
+							]
+						},
+						"description": "Rota para buscar todas as categorias cadastradas."
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR CATEGORIA POR ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/categorias/6663a2f3ea590e026595d3ac",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"categorias",
+								"6663a2f3ea590e026595d3ac"
+							]
+						},
+						"description": "Rota para buscar as infroamções de uma categoria em específico através do ID."
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR CATEGORIAS",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Blusas\",\r\n    \"descricao\": \"Todas as blusas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/categorias/6663a2f3ea590e026595d3ac",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"categorias",
+								"6663a2f3ea590e026595d3ac"
+							]
+						},
+						"description": "Rota para atualizar as informações de uma categoria buscando-a pelo id (passando as informações pelo body)"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETAR CATEGORIA",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/categorias/6663a2f3ea590e026595d3ac",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"categorias",
+								"6663a2f3ea590e026595d3ac"
+							]
+						},
+						"description": "Deletar categoria buscando pelo ID."
+					},
+					"response": []
+				}
+			],
+			"description": "CRUD para criar, editar ou excluir as categorias dos produtos."
+		},
+		{
+			"name": "SUBCATEGORIAS",
+			"item": [
+				{
+					"name": "CRIAR SUBCATEGORIA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Femininas\",\r\n    \"descricao\": \"Somente para mulheres\",\r\n    \"categoria\": \"6663a2f3ea590e026595d3ac\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/subcategorias",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"subcategorias"
+							]
+						},
+						"description": "Rota para criar subcategoria. (pelo body como o exemplo abaixo)"
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR SUBCATEGORIAS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/subcategorias",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"subcategorias"
+							]
+						},
+						"description": "Rota para buscar as subcategorias criadas."
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR SUBCATEGORIA POR ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/subcategorias/6664e312e33c97352b6c520a",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"subcategorias",
+								"6664e312e33c97352b6c520a"
+							]
+						},
+						"description": "Rota para buscar uma categoria específica pelo id. (pelo body conforme o exemplo abaixo)"
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR SUBCATEGORIA",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Masculinas\",\r\n    \"descricao\": \"Somente para homens\",\r\n    \"categoria\": \"6663a2f3ea590e026595d3ac\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/subcategorias/6664e312e33c97352b6c520a",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"subcategorias",
+								"6664e312e33c97352b6c520a"
+							]
+						},
+						"description": "Rota para atualizar as informações de uma subcategoria."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETAR SUBCATEGORIA",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/subcategorias/6664e312e33c97352b6c520a",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"subcategorias",
+								"6664e312e33c97352b6c520a"
+							]
+						},
+						"description": "Rota para deletar uma subcategoria pelo id."
+					},
+					"response": []
+				}
+			],
+			"description": "CRUD de criar, editar e excluir Subcategorias de produtos"
+		},
+		{
+			"name": "FORMAPAGAMENTO",
+			"item": [
+				{
+					"name": "CRIAR FORMAPAGAMENTO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Cartão de crédito\",\r\n    \"descricao\": \"Utilizado para parcelar compras ou cliente sem dinheiro\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/formapagamentos",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"formapagamentos"
+							]
+						},
+						"description": "Rota para cadastrar uma nova forma de pagamento. (pelo body conforme modelo abaixo)"
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR FORMAS DE PAGAMENTO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/formapagamentos",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"formapagamentos"
+							]
+						},
+						"description": "Rota para buscar as formas de pagamento cadastradas."
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR FORMA DE PAGAMENTO PELO ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/formapagamentos/6665d8d84d1ac299b38a5cf9",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"formapagamentos",
+								"6665d8d84d1ac299b38a5cf9"
+							]
+						},
+						"description": "Rota para buscar forma de pagamento pelo id."
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR FORMA DE PAGAMENTO",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Cartão de débito\",\r\n    \"descricao\": \"Utilizado para comprar no cartão de débito\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/formapagamentos/6665d8d84d1ac299b38a5cf9",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"formapagamentos",
+								"6665d8d84d1ac299b38a5cf9"
+							]
+						},
+						"description": "Rota para atualizar forma de pagamento pelo id. (através do body como exemplo abaixo)"
+					},
+					"response": []
+				},
+				{
+					"name": "EXCLUIR FORMA DE PAGAMENTO",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/formapagamentos/6665d8d84d1ac299b38a5cf9",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"formapagamentos",
+								"6665d8d84d1ac299b38a5cf9"
+							]
+						},
+						"description": "Excluir forma de pagamento pelo id."
+					},
+					"response": []
+				}
+			],
+			"description": "CRUD para criar, editar e excluir formas de pagamento."
+		},
+		{
+			"name": "PRODUTOS",
+			"item": [
+				{
+					"name": "CRIAR PRODUTO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Blusa Nike Jordan\", \r\n    \"descricao\": \"Nova blusa da colab Nike + Jordan\",\r\n    \"marca\": \"Nike\", \r\n    \"categoria\": \"6663a2f3ea590e026595d3ac\",\r\n    \"tamanho\" : \"G\", \r\n    \"preco\" : \"299.00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/produtos",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"produtos"
+							]
+						},
+						"description": "Rota para criar produto (através do body)"
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR PRODUTOS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/produtos",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"produtos"
+							]
+						},
+						"description": "Rota para buscar todos os produtos cadastrados."
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR PRODUTO POR ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/produtos/6665ee82698e768268b1bd6d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"produtos",
+								"6665ee82698e768268b1bd6d"
+							]
+						},
+						"description": "Rota para buscar um produto através do id."
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR PRODUTO",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Blusa Nike Jordan \", \r\n    \"descricao\": \"Nova blusa da coleção Nike Jordan\",\r\n    \"marca\": \"Nike\", \r\n    \"categoria\": \"6663a2f3ea590e026595d3ac\",\r\n    \"tamanho\" : \"G\", \r\n    \"preco\" : \"299.00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/produtos/6665ee82698e768268b1bd6d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"produtos",
+								"6665ee82698e768268b1bd6d"
+							]
+						},
+						"description": "Atualizar as informações de um produto. (pelo body conforme exemplo abaixo)"
+					},
+					"response": []
+				},
+				{
+					"name": "EXCLUIR PRODUTO",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/produtos/6665ee82698e768268b1bd6d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"produtos",
+								"6665ee82698e768268b1bd6d"
+							]
+						},
+						"description": "Excluir um produto através do id."
+					},
+					"response": []
+				}
+			],
+			"description": "CRUD para criar, editar e excluir produtos."
+		},
+		{
+			"name": "PEDIDOS",
+			"item": [
+				{
+					"name": "CRIAR PEDIDO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cliente\": \"666cddf6bf5f7f0acbe2ee24\", \r\n    \"produto\": \"6665ee82698e768268b1bd6d\",\r\n    \"dataPedido\": \"2024-06-09\",\r\n    \"quantidade\": \"2\", \r\n    \"valorTotal\": \"1\",\r\n    \"pagamento\": \"6665d8d84d1ac299b38a5cf9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/pedidos",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"pedidos"
+							]
+						},
+						"description": "Rota para criar um pedido (pelo body conforme exemplo abaixo)"
+					},
+					"response": []
+				},
+				{
+					"name": "VER PEDIDOS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/pedidos",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"pedidos"
+							]
+						},
+						"description": "Rota para buscar os pedidos cadastrados."
+					},
+					"response": []
+				},
+				{
+					"name": "BUSCAR PEDIDO POR ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/pedidos/6666315dd86204e4bcdb7a0d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"pedidos",
+								"6666315dd86204e4bcdb7a0d"
+							]
+						},
+						"description": "Rota para buscar um pedido pelo id"
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR PEDIDO",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"cliente\": \"666397ba6ef4ae1c0cde6c93\", \r\n    \"produto\": \"6665ee82698e768268b1bd6d\",\r\n    \"dataPedido\": \"2024-06-09\",\r\n    \"quantidade\": \"3\", \r\n    \"valorTotal\": \"1\",\r\n    \"pagamento\": \"6665d8d84d1ac299b38a5cf9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/pedidos/6669011fdb7c7702a1984fc0",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"pedidos",
+								"6669011fdb7c7702a1984fc0"
+							]
+						},
+						"description": "Rota para atualizar informações de um pedido. (pelo body conforme abaixo)"
+					},
+					"response": []
+				},
+				{
+					"name": "EXCLUIR PEDIDO",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/pedidos/6669011fdb7c7702a1984fc0",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"pedidos",
+								"6669011fdb7c7702a1984fc0"
+							]
+						},
+						"description": "Rota para excluir um pedido pelo id"
+					},
+					"response": []
+				}
+			],
+			"description": "CRUD para criar, editar e excluir um pedido."
+		},
+		{
+			"name": "AUTENTICACAO",
+			"item": [
+				{
+					"name": "REGISTRAR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Vitor\",\r\n    \"email\": \"vitor@email\",\r\n    \"senha\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/registrar",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"registrar"
+							]
+						},
+						"description": "Registrando usuário (nome, email e senha, na qual email e senha será o login)"
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"vitor@email\",\r\n    \"senha\": \"12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/auth/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						},
+						"description": "Operação de login para autenticar usuário. (email e senha serão verificados para ver se estão cadastradas a algum usuário no banco)."
+					},
+					"response": []
+				}
+			],
+			"description": "Operação de segurança para acessar as requisições e respostas do banco."
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{TOKEN}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJub21lIjoiVml0b3IiLCJlbWFpbCI6InZpdG9yQGVtYWlsIiwiaWF0IjoxNzE4NDA3NzA4LCJleHAiOjE3MTg0MTQ5MDh9.EBuGjFlpurN5ylUsRBDoI8INsh0b2K8fJOZj6lHy6sc",
+			"type": "string"
+		},
+		{
+			"key": "URL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
